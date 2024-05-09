@@ -10,6 +10,9 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule
   styleUrl: './ofertatrabajo.component.css'
 })
 export class OfertatrabajoComponent {
+
+  oficios: [string] = ['Vacio'];
+
   registro: any = {
     nombreTrabajo: '',
     descripcionTrabajo: '',
@@ -18,6 +21,18 @@ export class OfertatrabajoComponent {
     oficios: '',
     tipoContrato: ''
   };
+
+  onChangeOficio(event: any) {
+    // const oficioSeleccionado = event?.target?.value;
+    // if (oficioSeleccionado) {
+    //   console.log('Oficio seleccionado:', oficioSeleccionado);
+    //   this.oficios.push(oficioSeleccionado)
+    //   // Puedes realizar cualquier lógica adicional aquí
+    // } else {
+    //   console.error('Error: No se pudo obtener el valor del select.');
+    // }
+    console.log(event)
+  }
 
   submitForm() {
     // Aquí puedes manejar la lógica para enviar el formulario

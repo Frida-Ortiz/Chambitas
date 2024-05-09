@@ -160,6 +160,7 @@
         [(ngModel)]="registro.oficios"
         required
         [ngClass]="{'is-invalid': registroForm.controls['oficios']?.invalid && registroForm.controls['oficios']?.touched}"
+        (change)="onChangeOficio($event)"
 
       >
         <option value="" disabled selected>Selecciona un oficio</option>
@@ -177,9 +178,7 @@
       </div>
       <div class="col-md-6">
         <ul class="list-group">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-
+          <li *ngFor="let o of oficios" class="list-group-item">{{o}}</li>
         </ul>
       </div>
     </div>
