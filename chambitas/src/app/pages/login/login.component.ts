@@ -1,29 +1,22 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SupabaseService } from '../../services/supabase.service';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
   email: string = '';
   pass: string = '';
 
-  constructor(private supabaseService: SupabaseService) {}
-
-  async registerUser() {
-    const email = 'example@email.com';
-    const password = 'example-password';
-  const response = await this.supabaseService.signUp(email, password);
-    if (response.error) {
-      console.error('Registration failed:', response.error);
-    } else if (response.data) {
-      console.log('User registered:', response.data);
-    }
+  signIn() {
+    console.log('Email:', this['email']); // Accede a 'email' utilizando la notación de indexación
+    console.log('Contraseña:', this['pass']); // Accede a 'pass' utilizando la notación de indexación
   }
 
 }

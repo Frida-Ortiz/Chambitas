@@ -1,6 +1,6 @@
 // src/app/services/supabase.service.ts
 import { Injectable } from '@angular/core';
-import { createClient, SupabaseClient,AuthResponse, AuthSession } from '@supabase/supabase-js';
+import { createClient, SupabaseClient,AuthResponse } from '@supabase/supabase-js';
 import { environment } from '../evironments/environment';
 
 @Injectable({
@@ -9,10 +9,16 @@ import { environment } from '../evironments/environment';
 export class SupabaseService {
   private supabaseUrl = environment.supabaseUrl;
   private supabaseAnonKey = environment.supabaseAnonKey;
-  private supabase: SupabaseClient;
+  private supabase!: SupabaseClient;
 
   constructor() {
-    this.supabase = createClient(this.supabaseUrl, this.supabaseAnonKey);
+    console.log("Initializing Supabase Service...");
+    try {
+      this.supabase = createClient(this.supabaseUrl, this.supabaseAnonKey);
+      console.log("Supabase initialized successfully:", this.supabase);
+    } catch (error) {
+      console.error("Error initializing Supabase:", error);
+    }
   }
 
 
